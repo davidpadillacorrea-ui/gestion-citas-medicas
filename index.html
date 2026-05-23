@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedAgenda UX | Prototipo Web</title>
+  <meta name="description" content="Prototipo web para la gestión y control de citas médicas bajo enfoque de Diseño Centrado en el Usuario." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="topbar" role="banner">
+    <div class="brand" aria-label="MedAgenda UX">
+      <span class="brand-icon" aria-hidden="true">+</span>
+      <div>
+        <strong>MedAgenda UX</strong>
+        <small>Gestión y control de citas médicas</small>
+      </div>
+    </div>
+    <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="navMenu">Menú</button>
+    <nav id="navMenu" class="nav" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#paciente">Paciente</a>
+      <a href="#administrativo">Administrativo</a>
+      <a href="#evaluacion">Evaluación</a>
+      <a href="#entrega">Entrega</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section id="inicio" class="hero section-grid">
+      <div class="hero-copy">
+        <span class="tag">Prototipo web - Fase 3</span>
+        <h1>Reservar, controlar y hacer seguimiento a citas médicas sin enredos.</h1>
+        <p>Este prototipo transforma el problema identificado en la fase 1 y el enfoque DCU de la fase 2 en una interfaz web funcional, clara y evaluable.</p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#paciente">Probar flujo del paciente</a>
+          <a class="secondary-btn" href="#administrativo">Ver control administrativo</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Resumen del prototipo">
+        <div class="metric-card accent">
+          <span>Disponibilidad</span>
+          <strong>En tiempo real</strong>
+          <small>Franjas visibles y seleccionables.</small>
+        </div>
+        <div class="metric-row">
+          <div class="metric-card"><span>Citas hoy</span><strong>42</strong><small>36 confirmadas</small></div>
+          <div class="metric-card"><span>No asistencia</span><strong>8%</strong><small>Meta menor a 10%</small></div>
+        </div>
+        <div class="status-card">
+          <p><b>Estado del sistema:</b> agenda operativa, recordatorios activos y trazabilidad habilitada.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="problema-title">
+      <div class="section-header">
+        <span class="tag">Continuidad del proyecto</span>
+        <h2 id="problema-title">Problema que atiende la interfaz</h2>
+      </div>
+      <div class="cards three">
+        <article class="card">
+          <h3>Paciente</h3>
+          <p>Necesita agendar, cancelar o reprogramar citas con pocos pasos, sin llamadas repetidas ni información confusa.</p>
+        </article>
+        <article class="card">
+          <h3>Administrativo</h3>
+          <p>Requiere controlar agendas, estados de citas, cancelaciones y demanda por especialidad desde una vista centralizada.</p>
+        </article>
+        <article class="card">
+          <h3>Institución</h3>
+          <p>Busca reducir ausentismo, mejorar trazabilidad y usar indicadores para tomar decisiones operativas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="paciente" class="section split" aria-labelledby="paciente-title">
+      <div>
+        <span class="tag">Flujo principal</span>
+        <h2 id="paciente-title">Reserva de cita para paciente</h2>
+        <p>El usuario elige especialidad, profesional, fecha y hora. El sistema confirma la cita y entrega un resumen claro.</p>
+        <form class="appointment-form" aria-label="Formulario de reserva de cita médica">
+          <label>Especialidad
+            <select id="specialty">
+              <option>Medicina general</option>
+              <option>Nutrición</option>
+              <option>Psicología</option>
+              <option>Control de obesidad</option>
+            </select>
+          </label>
+          <label>Profesional
+            <select id="doctor">
+              <option>Dra. Laura Méndez</option>
+              <option>Dr. Carlos Torres</option>
+              <option>Dra. Natalia Ríos</option>
+            </select>
+          </label>
+          <label>Fecha
+            <input type="date" id="date" />
+          </label>
+        </form>
+        <div class="time-selector" role="group" aria-label="Horarios disponibles">
+          <button class="time active" data-time="08:30 a. m.">08:30</button>
+          <button class="time" data-time="10:00 a. m.">10:00</button>
+          <button class="time" data-time="02:30 p. m.">14:30</button>
+          <button class="time" data-time="04:00 p. m.">16:00</button>
+        </div>
+        <button id="confirmBtn" class="primary-btn full">Confirmar cita</button>
+      </div>
+      <aside class="phone-frame" aria-label="Vista móvil simulada del resumen de la cita">
+        <div class="phone-header">Mi cita</div>
+        <div class="phone-body">
+          <div class="avatar" aria-hidden="true">DP</div>
+          <h3 id="summarySpecialty">Medicina general</h3>
+          <p id="summaryDoctor">Dra. Laura Méndez</p>
+          <div class="info-list">
+            <span>Fecha <b id="summaryDate">Seleccionar fecha</b></span>
+            <span>Hora <b id="summaryTime">08:30 a. m.</b></span>
+            <span>Estado <b class="badge success">Preconfirmada</b></span>
+          </div>
+          <div class="notice">Recibirás recordatorio 24 horas antes por correo o WhatsApp institucional.</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="administrativo" class="section" aria-labelledby="admin-title">
+      <div class="section-header">
+        <span class="tag">Control interno</span>
+        <h2 id="admin-title">Panel administrativo de agenda</h2>
+        <p>Vista para confirmar citas, detectar cancelaciones, revisar estados y priorizar atención.</p>
+      </div>
+      <div class="dashboard">
+        <div class="dash-card"><span>Confirmadas</span><strong>36</strong></div>
+        <div class="dash-card"><span>Pendientes</span><strong>6</strong></div>
+        <div class="dash-card"><span>Canceladas</span><strong>3</strong></div>
+        <div class="dash-card"><span>Reprogramadas</span><strong>5</strong></div>
+      </div>
+      <div class="table-wrap" role="region" aria-label="Tabla de citas médicas" tabindex="0">
+        <table>
+          <thead>
+            <tr><th>Paciente</th><th>Especialidad</th><th>Hora</th><th>Estado</th><th>Acción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ana Pérez</td><td>Medicina general</td><td>08:30</td><td><span class="badge success">Confirmada</span></td><td><button class="small-btn">Ver</button></td></tr>
+            <tr><td>Jorge Díaz</td><td>Nutrición</td><td>10:00</td><td><span class="badge warning">Pendiente</span></td><td><button class="small-btn">Confirmar</button></td></tr>
+            <tr><td>María Gómez</td><td>Psicología</td><td>14:30</td><td><span class="badge neutral">Reprogramada</span></td><td><button class="small-btn">Gestionar</button></td></tr>
+            <tr><td>Luis Rojas</td><td>Control de obesidad</td><td>16:00</td><td><span class="badge danger">Cancelada</span></td><td><button class="small-btn">Motivo</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="evaluacion" class="section split" aria-labelledby="evaluacion-title">
+      <div>
+        <span class="tag">Validación DCU</span>
+        <h2 id="evaluacion-title">Métodos de evaluación del prototipo</h2>
+        <ul class="check-list">
+          <li>Prueba de tarea: reservar una cita en menos de 3 minutos.</li>
+          <li>Evaluación heurística: visibilidad del estado, consistencia y prevención de errores.</li>
+          <li>Checklist de accesibilidad: contraste, teclado, etiquetas y mensajes claros.</li>
+          <li>Entrevista breve: claridad, confianza y percepción de facilidad.</li>
+        </ul>
+      </div>
+      <div class="evaluation-card">
+        <h3>Indicadores sugeridos</h3>
+        <div class="progress-item"><span>Tasa de éxito</span><div><i style="width: 90%"></i></div><b>90%</b></div>
+        <div class="progress-item"><span>Errores críticos</span><div><i style="width: 20%"></i></div><b>Bajo</b></div>
+        <div class="progress-item"><span>Satisfacción</span><div><i style="width: 86%"></i></div><b>4.3/5</b></div>
+        <p>Los datos son simulados para mostrar cómo se reportaría una evaluación académica del prototipo.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="experiencia-title">
+      <div class="section-header">
+        <span class="tag">Sistematización</span>
+        <h2 id="experiencia-title">Experiencia de desarrollo</h2>
+      </div>
+      <div class="timeline">
+        <div><b>1. Comprensión</b><p>Se retomó el problema de gestión deficiente de citas médicas.</p></div>
+        <div><b>2. Diseño</b><p>Se priorizó un flujo mínimo viable: agendar, confirmar y controlar estados.</p></div>
+        <div><b>3. Prototipado</b><p>Se construyó una interfaz web estática, responsive y publicable.</p></div>
+        <div><b>4. Evaluación</b><p>Se definieron tareas, métricas y recomendaciones de mejora.</p></div>
+      </div>
+    </section>
+
+    <section id="entrega" class="section delivery" aria-labelledby="entrega-title">
+      <span class="tag">Entrega final</span>
+      <h2 id="entrega-title">Enlaces para GitHub Pages y video</h2>
+      <p>Después de publicar el repositorio, reemplaza estos campos por los enlaces reales.</p>
+      <div class="link-boxes">
+        <div><span>Repositorio / GitHub Pages</span><code>https://usuario.github.io/prototipo-citas-medicas/</code></div>
+        <div><span>Video YouTube</span><code>https://youtu.be/enlace-del-video</code></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Cita confirmada correctamente.</div>
+
+  <footer>
+    <p>Prototipo académico - Ingeniería de Software - Gestión de control de citas médicas.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
